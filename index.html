@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jitsi Room Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            word-break: break-all;
+        }
+
+        a {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Jitsi Room Generator</h1>
+
+    <button onclick="generateRoom()">
+        Generate Meeting URL
+    </button>
+
+    <div id="result"></div>
+
+    <script>
+        function generateRoom() {
+            const roomId = crypto.randomUUID();
+
+            const meetingUrl = `https://meet.jit.si/${roomId}`;
+
+            document.getElementById('result').innerHTML = `
+                <p><strong>Room ID:</strong> ${roomId}</p>
+                <p>
+                    <a href="${meetingUrl}" target="_blank">
+                        ${meetingUrl}
+                    </a>
+                </p>
+            `;
+        }
+    </script>
+
+</body>
+</html>
